@@ -57,13 +57,6 @@ public class ExchangeAlfa {
 		return currencyMark;
 	}
 
-	public double changeDollarsToPln(double priceInDollars) {
-		openWebsiteInBrowser();
-		setValueToExchange(priceInDollars);
-		selectNewCurrency();
-		return recalculateValue(priceInDollars);
-	}
-
 	private void openWebsiteInBrowser() {
 		driver.get(website);
 	}
@@ -80,9 +73,10 @@ public class ExchangeAlfa {
 	}
 
 	private void setValueToExchange(double value) {
+		int newValue = (int)value;
 		driver.findElement(By.id(CURRENCY_AMOUNT_INPUT)).clear();
 		driver.findElement(By.id(CURRENCY_AMOUNT_INPUT)).sendKeys(
-				Double.toString(value));
+				Integer.toString(newValue));
 	}
 
 	private void selectNewCurrency(Currencies fixCurrency) {
@@ -92,19 +86,4 @@ public class ExchangeAlfa {
 		dropdown.selectByValue(fixCurrency.getCurrencies());
 		currencyMark = fixCurrency.getCurrencies();
 	}
-
-	private void selectNewCurrency() {
-		WebElement currencyItem = driver
-				.findElement(By.id(CURRENCY_MARK_INPUT));
-		Select dropdown = new Select(currencyItem);
-		// dropdown.selectByValue(Currencies.USD.toString());
-		dropdown.selectByValue(getCurrency());
-	}
-
-	private String getCurrency() {
-		Currencies currency;
-		currency = Currencies.USD;
-		return currency.getCurrencies();
-	}
-
 }
