@@ -1,6 +1,5 @@
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -23,7 +22,7 @@ public class ExchangeBeta {
 
 	private WebDriver driver;
 	Properties prop = new Properties();
-	InputStream input = null;
+	FileInputStream input = null;
 
 	public ExchangeBeta(WebDriver driver) {
 		this.driver = driver;

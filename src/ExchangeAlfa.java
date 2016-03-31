@@ -1,6 +1,5 @@
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -22,8 +21,8 @@ public class ExchangeAlfa {
 
 	private WebDriver driver;
 	Properties prop = new Properties();
-	InputStream input = null;
-
+	FileInputStream input = null;
+	
 	public ExchangeAlfa(WebDriver driver) {
 		this.driver = driver;
 		try {
@@ -63,6 +62,10 @@ public class ExchangeAlfa {
 
 	private double recalculateValue(double calculatedAmount) {
 		driver.findElement(By.id(CALCULATE_RESULT_BUTTON)).click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException ex) {
+		}
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.invisibilityOfElementWithText(
 				By.id(ORIGINAL_AMOUNT), Double.toString(calculatedAmount)));
