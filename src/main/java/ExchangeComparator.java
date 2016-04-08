@@ -45,14 +45,14 @@ public class ExchangeComparator {
 				min = entry;
 			}
 		}
-		
+
 		String mark = compareMarks(resultMarkAlfa, resultMarkBeta);
 		String name = min.getKey().toString()
 				.substring(0, min.getKey().toString().indexOf('@'));
 
 		String cheaperDeskription = String.join(" ", "better offer for", Double
-				.toString(CURRENCY_VALUE), mark, "give you", name, min.getValue()
-				.toString());
+				.toString(CURRENCY_VALUE), mark, "give you", name, min
+				.getValue().toString());
 		System.out.println(cheaperDeskription);
 
 	}

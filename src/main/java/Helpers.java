@@ -1,4 +1,3 @@
-
 public class Helpers {
 
 	public static double makeResultDouble(String valueToConvert) {
